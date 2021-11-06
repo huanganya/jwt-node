@@ -1,21 +1,33 @@
-const mongoose = require("mongoose");
+const Sequelize = require("sequelize");
+const host = "localhost";
+const port = 5432;
+const username = "postgres";
+const password = "root";
+const dbname = "audioapp";
+const dialect = "postgres";
+const pool = { max: 5, min: 0, acquire: 30000, idle: 10000 };
 
-const { MONGO_URI } = process.env;
-exports.connect = () => {
-  // Connecting to the database
-  mongoose
-    .connect("mongodb://localhost/audioapp", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    })
-    .then(() => {
-      console.log("Successfully connected to database");
-    })
-    .catch((error) => {
-      console.log("database connection failed. exiting now...");
-      console.error(error);
-      process.exit(1);
-    });
-};
+const sequelize = new Sequelize(dbname, username, password, {
+  host: host,
+  dialect: dialect,
+
+  pool: {
+    max: pool.max,
+    min: pool.min,
+    acquire: pool.acquire,
+    idle: pool.idle
+  }
+});
+
+const db = {};
+
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+db.user = require("../models/user.model")(sequelize, Sequelize);
+db.channel = require("../models/channel.model")(sequelize, Sequelize);
+db.profile = require("../models/profile.model")(sequelize, Sequelize);
+db.playlist = require("../models/playlist.model")(sequelize, Sequelize);
+db.relationlist = require("../models/relationlist.model")(sequelize, Sequelize);
+
+module.exports = db;
