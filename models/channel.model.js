@@ -1,4 +1,4 @@
-module.exports = (sequelize, Sequelize) => {  
+module.exports = (sequelize, Sequelize) => {
     const Channel = sequelize.define("channel", {
         id: {
             type: Sequelize.INTEGER,
@@ -41,7 +41,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        
+
         playlist: {
             type: Sequelize.STRING,
             allowNull: false

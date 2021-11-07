@@ -1,4 +1,4 @@
-module.exports = (sequelize, Sequelize) => {  
+module.exports = (sequelize, Sequelize) => {
     const Playlist = sequelize.define("playlist", {
         id: {
             type: Sequelize.INTEGER,

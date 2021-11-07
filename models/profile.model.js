@@ -1,4 +1,4 @@
-module.exports = (sequelize, Sequelize) => {  
+module.exports = (sequelize, Sequelize) => {
     const Profile = sequelize.define("profile", {
         id: {
             type: Sequelize.INTEGER,
@@ -41,7 +41,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        
+
         state: {
             type: Sequelize.STRING,
             allowNull: false

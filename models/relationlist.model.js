@@ -1,4 +1,4 @@
-module.exports = (sequelize, Sequelize) => {  
+module.exports = (sequelize, Sequelize) => {
     const RelationList = sequelize.define("relationlist", {
         id: {
             type: Sequelize.INTEGER,

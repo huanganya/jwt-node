@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const host = "localhost";
 const port = 5432;
-const username = "anyahuang";
-const password = "";
+const username = "postgres";
+const password = "root";
 const dbname = "audioapp";
 const dialect = "postgres";
 const pool = { max: 5, min: 0, acquire: 30000, idle: 10000 };
@@ -15,8 +15,8 @@ const sequelize = new Sequelize(dbname, username, password, {
     max: pool.max,
     min: pool.min,
     acquire: pool.acquire,
-    idle: pool.idle,
-  },
+    idle: pool.idle
+  }
 });
 
 const db = {};

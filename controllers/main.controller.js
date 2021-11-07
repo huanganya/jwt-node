@@ -9,7 +9,7 @@ const getUserID = function(req) {
     if (req.header("authorization")) {
         const JWT_SECRECT = "tokey_key";
         const jwttokenHeader = req.header("authorization").replace("Bearer ", "");
-    
+
         if (!jwt.verify(jwttokenHeader, JWT_SECRECT)) {
             throw new Error("Token invalid");
         }
@@ -22,7 +22,7 @@ const getUserID = function(req) {
 
 exports.upload = async function(req, res) {
     // const JWT_SECRECT = "tokey_key";
-    
+
     // if (req.header("authorization")) {
     //     const jwttokenHeader = req.header("authorization").replace("Bearer ", "");
 
