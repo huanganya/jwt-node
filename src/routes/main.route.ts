@@ -6,24 +6,20 @@ import asyncHandler from "express-async-handler";
 var router = express.Router();
 
 router.post("/upload", auth, asyncHandler(mainController.upload));
-router.post(
-  "/setinfomations",
-  auth,
-  asyncHandler(mainController.setinfomations)
-);
-router.post("/getmovies", asyncHandler(mainController.getmovies));
-router.post("/getmymovies", asyncHandler(mainController.getmymovies));
+router.post("/infomations", auth, asyncHandler(mainController.setinfomations));
+router.get("/movies/:userId", asyncHandler(mainController.getmovies));
+router.get("/mymovies", asyncHandler(mainController.getmymovies));
 
-router.post("/getprofile", asyncHandler(mainController.getprofile));
-router.post("/saveprofile", asyncHandler(mainController.saveprofile));
+router.get("/profile/:userId", asyncHandler(mainController.getprofile));
+router.post("/profile", asyncHandler(mainController.saveprofile));
 
-router.post("/saveplaylist", asyncHandler(mainController.saveplaylist));
-router.post("/loadplaylist", asyncHandler(mainController.loadplaylist));
-router.post("/deleteplaylist", asyncHandler(mainController.deleteplaylist));
+router.post("/playlist", asyncHandler(mainController.saveplaylist));
+router.get("/playlist/:userId", asyncHandler(mainController.loadplaylist));
+router.delete("/playlist", asyncHandler(mainController.deleteplaylist));
 
-router.post("/addtoplaylist", asyncHandler(mainController.addtoplaylist));
-router.post(
-  "/removefromplaylist",
+router.post("/playlist/:playlistId", asyncHandler(mainController.addtoplaylist));
+router.delete(
+  "/playlist/:playlistId",
   asyncHandler(mainController.removefromplaylist)
 );
 router.post("/getlist", asyncHandler(mainController.getlist));
